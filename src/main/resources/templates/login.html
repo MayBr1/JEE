@@ -1,35 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inscription et Connexion</title>
+  <title>Page de Connexion</title>
 </head>
 <body>
-<h1>Inscription</h1>
-<form action="/auth/register" method="post">
-  <label>CIN:</label><input type="text" name="cin" required><br>
-  <label>Nom:</label><input type="text" name="nom" required><br>
-  <label>Prénom:</label><input type="text" name="prenom" required><br>
-  <label>Sexe:</label>
-  <select name="sexe" required>
-    <option value="f">Femme</option>
-    <option value="m">Homme</option>
-  </select><br>
-  <label>Téléphone:</label><input type="text" name="tel" required><br>
-  <label>Rôle:</label>
-  <select name="role" required>
-    <option value="c">Client</option>
-    <option value="p">Prestataire</option>
-  </select><br>
-  <button type="submit">S'inscrire</button>
-</form>
-
-<h1>Connexion</h1>
+<h1>Login</h1>
 <form action="/auth/login" method="post">
-  <label>CIN:</label><input type="text" name="cin" required><br>
-  <label>Téléphone:</label><input type="text" name="tel" required><br>
+  <label for="cin">CIN</label>
+  <input type="text" id="cin" name="cin" required>
+
+  <label for="tel">Téléphone</label>
+  <input type="text" id="tel" name="tel" required>
+
   <button type="submit">Se connecter</button>
 </form>
+<div th:if="${message}">
+  <p th:text="${message}"></p>
+</div>
 </body>
 </html>
