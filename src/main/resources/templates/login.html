@@ -2,20 +2,148 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Page de Connexion</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f1f1f1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh; /* Assure que le corps occupe toute la hauteur de la page */
+      margin: 0;
+      overflow: auto; /* Si le contenu dépasse, il peut défiler */
+    }
+
+    .container {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 600px;
+      padding: 40px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      overflow-y: auto; /* Permet de faire défiler le contenu si nécessaire */
+      max-height: 90vh; /* Limite la hauteur du conteneur */
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+      font-size: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    label {
+      font-size: 1rem;
+      color: #555;
+    }
+
+    input[type="text"], select {
+      padding: 15px;
+      font-size: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus, select:focus {
+      border-color: #4CAF50;
+      outline: none;
+    }
+
+    button {
+      padding: 15px;
+      font-size: 1.2rem;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .form-section {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .form-section h2 {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+  </style>
 </head>
 <body>
-<h1>Login</h1>
-<form action="/auth/login" method="post">
-  <label for="cin">CIN</label>
-  <input type="text" id="cin" name="cin" required>
+<div class="container">
+  <div class="form-section">
+    <h2>Inscription</h2>
+    <form action="/auth/register" method="post">
+      <label for="cin">CIN:</label>
+      <input type="text" id="cin" name="cin" required>
 
-  <label for="tel">Téléphone</label>
-  <input type="text" id="tel" name="tel" required>
+      <label for="nom">Nom:</label>
+      <input type="text" id="nom" name="nom" required>
 
-  <button type="submit">Se connecter</button>
-</form>
-<div th:if="${message}">
-  <p th:text="${message}"></p>
+      <label for="prenom">Prénom:</label>
+      <input type="text" id="prenom" name="prenom" required>
+
+      <label for="sexe">Sexe:</label>
+      <select name="sexe" id="sexe" required>
+        <option value="f">Femme</option>
+        <option value="m">Homme</option>
+      </select>
+
+      <label for="tel">Téléphone:</label>
+      <input type="text" id="tel" name="tel" required>
+
+      <label for="role">Rôle:</label>
+      <select name="role" id="role" required>
+        <option value="c">Client</option>
+        <option value="p">Prestataire</option>
+      </select>
+
+      <button type="submit">S'inscrire</button>
+    </form>
+  </div>
+
+  <div class="form-section">
+    <h2>Connexion</h2>
+    <form action="/auth/login" method="post">
+      <label for="cin">CIN:</label>
+      <input type="text" id="cin" name="cin" required>
+
+      <label for="tel">Téléphone:</label>
+      <input type="text" id="tel" name="tel" required>
+
+      <button type="submit">Se connecter</button>
+    </form>
+  </div>
 </div>
 </body>
 </html>

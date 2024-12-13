@@ -18,7 +18,6 @@ public class controleur {
     public String showLoginPage() {
         return "login";  // Renvoie le template login.html
     }
-
     // Traitement de la connexion
     @PostMapping("/login")
     public String login(@RequestParam String cin, @RequestParam String tel, Model model) {
@@ -29,6 +28,11 @@ public class controleur {
         }
         model.addAttribute("message", "Échec de la connexion. Vérifiez vos informations.");
         return "login";  // Retourne à la page login.html en cas d'échec
+    }
+    @PostMapping("/register")
+    public String register(@RequestBody login user) {
+        loginService.registerUser(user);
+        return "Utilisateur enregistré avec succès !";
     }
 }
 
